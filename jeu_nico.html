@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Jeu Nico</title>
+
+	<style type="text/css">
+		#btn
+		{
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			background-color: red;
+		}
+
+		body
+		{
+			display: flex;
+			justify-content: center;
+		}
+
+		#compteur
+		{
+			position: absolute;
+			top: 0;
+			left: 10px;
+		}
+	</style>
+
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">		
+		$(document).ready(function(){
+			var bouton = $("<input type='button' id='btn' value='clic me'>");
+			$("#body").append(bouton);
+
+			var compteur = 0;
+
+			var max_x = $(window).width();
+			var max_y = $(window).height();
+
+			$("#btn").on("click", function(){
+				var x = Math.floor(Math.random() *max_x);
+				var y = Math.floor(Math.random() *max_y);
+				$("#btn").css({"top": y, "left": x});
+				compteur++;
+				$("div").text(compteur);
+
+				document.body.style.background = "#" + (Math.random() *0xFFFFFF<<0).toString(16);
+				$(this).css("background-color", '#'+(Math.random()*0xFFFFFF<<0).toString(16));
+			});
+
+			
+		});
+
+		
+	</script>
+</head>
+<body id="body">
+	<div id="compteur"></div>
+</body>
+</html>
